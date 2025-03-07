@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getContacts } from './api/ContactService';
 import Header from './components/Header'
 import { ToastContainer } from 'react-toastify';
+import ContactList from './components/ContactList'
 
 function App() {
   const modalRef = useRef();
