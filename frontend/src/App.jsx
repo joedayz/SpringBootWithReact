@@ -1,4 +1,5 @@
 import { useEffect,useRef, useState } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { getContacts } from './api/ContactService';
@@ -23,7 +24,7 @@ function App() {
   };
 
   const toggleModal = show => show ? modalRef.current.showModal() : modalRef.current.close();
-  
+
   useEffect(() => {
     getAllContacts();
   }, []);
@@ -31,7 +32,14 @@ function App() {
   return (
     <>
       <Header toggleModal={toggleModal} nbOfContacts={data.totalElements}/>
-      <main>
+      <main className='main'>
+        <div className='container'>
+        <Routes>
+            <Route path='/' element={<Navigate to={'/contacts'} />} />
+            {/* <Route path="/contacts" element={<ContactList data={data} currentPage={currentPage} getAllContacts={getAllContacts} />} />
+            <Route path="/contacts/:id" element={<ContactDetail updateContact={updateContact} updateImage={updateImage} />} /> */}
+          </Routes>
+        </div>
 
       </main>
 
